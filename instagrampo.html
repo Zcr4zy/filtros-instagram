@@ -17,12 +17,70 @@
                     <b>Página Inicial</b>
                 </span>
             </div>
-            <div>teste</div>
+            <div class="sidebarIconsNav">
+                <i data-lucide="search" class="icon"></i>
+                <span>
+                    Pesquisa
+                </span>
+            </div>
+            <div class="sidebarIconsNav">
+                <i data-lucide="compass" class="icon"></i>
+                <span>
+                    Explorar
+                </span>
+            </div>
+            <div class="sidebarIconsNav">
+                <i data-lucide="square-play" class="icon"></i>
+                <span>
+                    Reels
+                </span>
+            </div>
+            <div class="sidebarIconsNav">
+                <i data-lucide="send" class="icon"></i>
+                <span>
+                    Mensagens
+                </span>
+            </div>
+            <div class="sidebarIconsNav">
+                <i data-lucide="heart" class="icon"></i>
+                <span>
+                    Notificações
+                </span>
+            </div>
+            <div class="sidebarIconsNav">
+                <i data-lucide="square-plus" class="icon"></i>
+                <span>
+                    Criar
+                </span>
+            </div>
+            <div class="sidebarIconsNav">
+                <i data-lucide="circle-user-round" class="icon"></i>
+                <span>
+                    Perfil
+                </span>
+            </div>
         </nav>
+    </div>
+    <div class="content-center">
+        <div class="div-storys">
+            <img src="src/meninoNey.jpeg">
+            <img src="src/sydney.jpeg">
+            <img src="src/TeViNaGran.jpg">
+            <img src="src/anaDeArmas.jpeg">
+            <img src="src/ronaldo.jpeg">
+            <img src="src/nhonho.jpeg">
+        </div>
+        <div class="posts">
+        </div>
     </div>
 </body>
 <script src="https://unpkg.com/lucide@latest"></script>
 <script>
   lucide.createIcons();
+  document.querySelectorAll("svg").forEach(svg => {
+    svg.setAttribute('width', 27)
+    svg.setAttribute('height', 25)
+  })
+  
 </script>
 </html>
