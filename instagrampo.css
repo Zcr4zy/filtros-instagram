@@ -80,3 +80,10 @@ body{
   box-sizing: border-box;
   margin-right: 13px;
 }
+
+.posts{
+  width:600px;
+  display: grid;
+  text-align: center;
+  
+}

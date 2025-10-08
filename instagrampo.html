@@ -71,6 +71,7 @@
             <img src="src/nhonho.jpeg">
         </div>
         <div class="posts">
+            <div id="posts-content"></div>
         </div>
     </div>
 </body>
@@ -81,6 +82,31 @@
     svg.setAttribute('width', 27)
     svg.setAttribute('height', 25)
   })
+
+  var contentPosts = document.getElementById("posts-content");
+
+  var posts = [
+    {
+        imagemPublicante: "src/meninoNey.jpeg",
+        imagemPublicacao: "https://i.pinimg.com/564x/6d/03/6e/6d036e066ab0387b33323e66aa4bd29f.jpg",
+        tempoPublicado: "14 min"
+    },
+    {
+        imagemPublicante: "src/ronaldo.jpeg",
+        imagemPublicacao: "https://media.tenor.com/3EPeIwLRLxwAAAAM/a7.gif",
+        tempoPublicado: "1 hora"
+    },
+    {
+        imagemPublicante: "src/sydney.jpeg",
+        imagemPublicacao: "src/Posts/Sydney.jpeg",
+        tempoPublicado: "50 min"
+    },
+  ]
+
+  posts.forEach((post, index) => {
+    alert(post.imagemPublicacao)
+  })
+
   
 </script>
 </html>
