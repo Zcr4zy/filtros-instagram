@@ -70,8 +70,7 @@
             <img src="src/ronaldo.jpeg">
             <img src="src/nhonho.jpeg">
         </div>
-        <div class="posts">
-            <div id="posts-content"></div>
+        <div class="posts" id="posts">
         </div>
     </div>
 </body>
@@ -83,29 +82,43 @@
     svg.setAttribute('height', 25)
   })
 
-  var contentPosts = document.getElementById("posts-content");
+  var contentPosts = document.getElementById("posts");
 
   var posts = [
     {
         imagemPublicante: "src/meninoNey.jpeg",
         imagemPublicacao: "https://i.pinimg.com/564x/6d/03/6e/6d036e066ab0387b33323e66aa4bd29f.jpg",
-        tempoPublicado: "14 min"
+        tempoPublicado: "14 min",
+        publicador: "neymarjr"
     },
     {
         imagemPublicante: "src/ronaldo.jpeg",
         imagemPublicacao: "https://media.tenor.com/3EPeIwLRLxwAAAAM/a7.gif",
-        tempoPublicado: "1 hora"
+        tempoPublicado: "1 hora",
+        publicador: "ronaldo"
     },
     {
         imagemPublicante: "src/sydney.jpeg",
         imagemPublicacao: "src/Posts/Sydney.jpeg",
-        tempoPublicado: "50 min"
+        tempoPublicado: "50 min",
+        publicador: "sydneysweeney"
     },
   ]
 
   posts.forEach((post, index) => {
-    alert(post.imagemPublicacao)
-  })
+    contentPosts.innerHTML += `
+        <div class="posts-content">
+            <div class="post-header">
+                <img src="${post.imagemPublicante}" alt="">
+                <b><span>${post.publicador} - </span></b><span style="color: rgba(255, 255, 255, 0.7);"> &nbsp; ${post.tempoPublicado}</span>
+            </div>
+            <div class="image-post">
+                <img src="${post.imagemPublicacao}">
+            </div>
+        </div>
+        `
+  });
+  
 
   
 </script>
