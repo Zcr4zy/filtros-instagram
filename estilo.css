@@ -1,0 +1,340 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    min-height: 100vh;
+    padding: 2rem;
+    color: white;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.header-icon {
+    width: 3rem;
+    height: 3rem;
+    color: #c084fc;
+}
+
+.header-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+}
+
+.header-subtitle {
+    color: #e9d5ff;
+    font-size: 1.125rem;
+}
+
+/* Main Grid */
+.main-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+    .main-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Sidebar */
+.sidebar {
+    background: rgba(30, 41, 59, 0.6);
+    backdrop-filter: blur(20px);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    height: fit-content;
+}
+
+.control-group {
+    margin-bottom: 1.5rem;
+}
+
+.control-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+}
+
+.label-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+/* File Input */
+.file-input {
+    width: 100%;
+    font-size: 0.875rem;
+    color: white;
+    cursor: pointer;
+}
+
+.file-input::file-selector-button {
+    margin-right: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    border: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    background: #a855f7;
+    color: white;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.file-input::file-selector-button:hover {
+    background: #9333ea;
+}
+
+/* Select Input */
+.select-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.select-input:focus {
+    outline: none;
+    ring: 2px solid #a855f7;
+    border-color: #a855f7;
+}
+
+.select-input option {
+    background: #1e293b;
+    color: white;
+}
+
+.select-input optgroup {
+    background: #1e293b;
+    font-weight: bold;
+}
+
+/* Color Picker - Estilo CodeFormer */
+.color-hex-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.05em;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.color-hex-input:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.color-hex-input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #a855f7;
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.2);
+}
+
+.color-picker-hidden {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Mode Info */
+.mode-info {
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 1rem;
+}
+
+.info-label {
+    font-weight: 600;
+    color: white;
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+}
+
+.info-value {
+    color: #e9d5ff;
+    font-size: 0.95rem;
+}
+
+/* Canvas Grid */
+.canvas-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .canvas-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Canvas Container */
+.canvas-container {
+    background: rgba(30, 41, 59, 0.6);
+    backdrop-filter: blur(20px);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+.canvas-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.canvas-wrapper {
+    background: rgba(15, 23, 42, 0.8);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    position: relative;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.canvas {
+    max-width: 100%;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    display: none;
+}
+
+.canvas.active {
+    display: block;
+}
+
+/* Export Button */
+.export-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+}
+
+.export-btn:hover {
+    background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
+}
+
+.export-btn:active {
+    transform: translateY(0);
+}
+
+.export-btn.hidden {
+    display: none;
+}
+
+.btn-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+/* Placeholder */
+.placeholder {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.placeholder.hidden {
+    display: none;
+}
+
+.placeholder-icon {
+    width: 4rem;
+    height: 4rem;
+    margin: 0 auto 1rem;
+    opacity: 0.3;
+}
+
+.placeholder-text {
+    font-size: 1.125rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 640px) {
+    body {
+        padding: 1rem;
+    }
+
+    .header-title {
+        font-size: 2rem;
+    }
+
+    .header-subtitle {
+        font-size: 1rem;
+    }
+
+    .sidebar {
+        padding: 1rem;
+    }
+
+    .canvas-container {
+        padding: 1rem;
+    }
+
+    .canvas-title {
+        font-size: 1.25rem;
+    }
+}
