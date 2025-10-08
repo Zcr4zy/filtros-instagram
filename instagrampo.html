@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InstaGrampo</title>
+    <link data-default-icon="https://static.cdninstagram.com/rsrc.php/v4/yI/r/VsNE-OHk_8a.png" rel="icon" sizes="192x192" href="https://static.cdninstagram.com/rsrc.php/v4/yI/r/VsNE-OHk_8a.png">
+    <link rel="stylesheet" href="instagrampo.css">
+</head>
+<body>
+    <div class="sidebarEsquerda">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1024px-Instagram_logo.svg.png" alt="instagrampo">
+        <nav>
+            <div class="sidebarIconsNav">
+                <i data-lucide="home" class="icon"></i>
+                <span>
+                    <b>Página Inicial</b>
+                </span>
+            </div>
+            <div class="sidebarIconsNav">
+                <i data-lucide="search" class="icon"></i>
+                <span>
+                    Pesquisa
+                </span>
+            </div>
+            <div class="sidebarIconsNav">
+                <i data-lucide="compass" class="icon"></i>
+                <span>
+                    Explorar
+                </span>
+            </div>
+            <div class="sidebarIconsNav">
+                <i data-lucide="square-play" class="icon"></i>
+                <span>
+                    Reels
+                </span>
+            </div>
+            <div class="sidebarIconsNav">
+                <i data-lucide="send" class="icon"></i>
+                <span>
+                    Mensagens
+                </span>
+            </div>
+            <div class="sidebarIconsNav">
+                <i data-lucide="heart" class="icon"></i>
+                <span>
+                    Notificações
+                </span>
+            </div>
+            <div class="sidebarIconsNav">
+                <i data-lucide="square-plus" class="icon"></i>
+                <span>
+                    Criar
+                </span>
+            </div>
+            <div class="sidebarIconsNav">
+                <i data-lucide="circle-user-round" class="icon"></i>
+                <span>
+                    Perfil
+                </span>
+            </div>
+        </nav>
+    </div>
+    <div class="content-center">
+        <div class="div-storys">
+            <img src="src/meninoNey.jpeg">
+            <img src="src/sydney.jpeg">
+            <img src="src/TeViNaGran.jpg">
+            <img src="src/anaDeArmas.jpeg">
+            <img src="src/ronaldo.jpeg">
+            <img src="src/nhonho.jpeg">
+        </div>
+        <div class="posts" id="posts">
+        </div>
+    </div>
+</body>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+  lucide.createIcons();
+  document.querySelectorAll("svg").forEach(svg => {
+    svg.setAttribute('width', 27)
+    svg.setAttribute('height', 25)
+  })
+
+  var contentPosts = document.getElementById("posts");
+
+  var posts = [
+    {
+        imagemPublicante: "src/meninoNey.jpeg",
+        imagemPublicacao: "https://i.pinimg.com/564x/6d/03/6e/6d036e066ab0387b33323e66aa4bd29f.jpg",
+        tempoPublicado: "14 min",
+        publicador: "neymarjr"
+    },
+    {
+        imagemPublicante: "src/ronaldo.jpeg",
+        imagemPublicacao: "https://media.tenor.com/3EPeIwLRLxwAAAAM/a7.gif",
+        tempoPublicado: "1 hora",
+        publicador: "ronaldo"
+    },
+    {
+        imagemPublicante: "src/sydney.jpeg",
+        imagemPublicacao: "src/Posts/Sydney.jpeg",
+        tempoPublicado: "50 min",
+        publicador: "sydneysweeney"
+    },
+  ]
+
+  posts.forEach((post, index) => {
+    contentPosts.innerHTML += `
+        <div class="posts-content">
+            <div class="post-header">
+                <img src="${post.imagemPublicante}" alt="">
+                <b><span>${post.publicador} - </span></b><span style="color: rgba(255, 255, 255, 0.7);"> &nbsp; ${post.tempoPublicado}</span>
+            </div>
+            <div class="image-post">
+                <img src="${post.imagemPublicacao}">
+            </div>
+        </div>
+        `
+  });
+  
+
+  
+</script>
+</html>
