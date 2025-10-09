@@ -17,6 +17,9 @@ body{
     overflow-x: hidden;
     overflow-y: hidden;
 }
+#logo{
+  cursor: pointer;
+}
 
 .sidebarEsquerda{
     position: fixed; 
@@ -48,6 +51,7 @@ body{
     font-size: 15.1px;
     margin-bottom: 27px;
     margin-left: 4px;
+    cursor: pointer;
 }
 
 .sidebarEsquerda .sidebarIconsNav span{
@@ -89,6 +93,7 @@ body{
     ); 
   box-sizing: border-box;
   margin-right: 13px;
+  cursor: pointer;
 }
 
 .post-header{
@@ -116,10 +121,12 @@ body{
     ); 
   box-sizing: border-box;
   margin-right: 13px;
+  cursor: pointer;
 }
 
 .posts-content span{
   font-size: 14px;
+  cursor: pointer ;
 }
 
 .image-post img{
@@ -127,4 +134,5 @@ body{
   width: 520px;
   height: 500px;
   border: 1px solid rgba(255, 255, 255,0.7);
+  cursor: pointer;
 }
