@@ -57,7 +57,7 @@ body{
     margin-left: 2px;
     margin-right: 15px;
     border-radius: 20px;
-    transition: background-color 0.7s ease;
+    transition: background-color 0.4s ease;
 }
 
 .sidebarEsquerda .sidebarIconsNav svg{
@@ -97,17 +97,17 @@ body{
   object-fit: cover;
   padding: 3px; 
   background:
-    conic-gradient(
-      #feda75,
-      #fa7e1e,
-      #d62976,
-      #962fbf,
-      #4f5bd5,
-      #feda75
-    ); 
+  conic-gradient(
+    #feda75,
+    #fa7e1e,
+    #d62976,
+    #962fbf,
+    #4f5bd5,
+    #feda75
+  ); 
   box-sizing: border-box;
   margin-right: 13px;
-  transition: filter 0.7s ease;
+  transition: filter 0.4s ease;
 }
 
 .div-storys img:hover{
@@ -139,7 +139,7 @@ body{
     ); 
   box-sizing: border-box;
   margin-right: 13px;
-  transition: filter 0.7s ease;
+  transition: filter 0.4s ease;
 }
 
 .post-header img:hover{
@@ -148,7 +148,7 @@ body{
 
 .posts-content span{
   font-size: 14px;
-  transition: filter 0.7s ease;
+  transition: filter 0.4s ease;
 }
 
 .posts-content span:hover{
@@ -161,7 +161,7 @@ body{
   width: 520px;
   height: 500px;
   border: 1px solid rgba(255, 255, 255,0.7);
-  transition: filter 0.7s ease;
+  transition: filter 0.4s ease;
   margin-bottom: 30px;
 }
 
@@ -171,4 +171,15 @@ body{
 
 .posts{
   margin-bottom: 40px;
+}
+
+#btnCriar{
+  background-color: transparent;
+  border: transparent;
+  color: white;
+  font-size: 15.1px;
+  margin-left: -5px;
+  display: flex;
+  text-align: center;
+  align-items: center;
 }
