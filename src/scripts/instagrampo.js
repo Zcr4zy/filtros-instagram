@@ -6,8 +6,29 @@ document.querySelectorAll("svg").forEach(svg => {
 
 var contentPosts = document.getElementById("posts");
 var btnCriar = $('#btnCriar');
+var modal = null;
+var corpoModal = null;
+var footerModal = null;
 
 
+$(document).ready(function(){
+    modal = new ModalJS({
+        title: 'Criar novo post',
+        //body: 'Carregando ...',
+        theme: 'dark',
+        // custom_buttons: [{}]
+        close_btn_text: "Fechar",
+        close_on_out_click: true,
+        draggable: false,
+        hide_close_btn: true,
+        //onclose: function(){}
+    })
+})
+
+
+
+//modal.show()
+//modal.hide()
 
 var posts = [
     {
@@ -45,5 +66,28 @@ posts.forEach((post, index) => {
 });
 
 btnCriar.on('click', function(){
-    alert('clicou')
+    modal.show();
+    carregarElementoInputImage();
 })
+
+function carregarElementoInputImage(){
+    corpoModal = $('.modaljs-modal-body');
+
+    footerModal = $('.modaljs-modal-button');
+    footerModal.remove();
+
+    corpoModal.empty();
+
+    corpoModal.html(`
+        <div class="divInputImage">
+            <img src="src/images/photos.png" class="imgPhotos">
+            <span>Selecione uma imagem</span>
+            <label class="btnInputImage">
+                Selecionar do dispositivo
+                <input class="inputImage" type="file" />
+            </label>
+        <div>
+    `);
+
+    
+}
