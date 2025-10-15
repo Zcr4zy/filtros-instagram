@@ -22,6 +22,7 @@
     min-width: 400px;
     padding: 10px;
     max-width: 80%;
+    transition: width ease 0.5s;
 }
 
 .modaljs-ripple {
