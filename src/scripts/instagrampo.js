@@ -14,6 +14,8 @@ var modalElement = null;
 
 var inputImagem = null;
 let originalImage = null;
+let canvasBlended = null;
+let modoSelecionado = "normal";
 
 
 $(document).ready(function(){
@@ -103,28 +105,13 @@ function carregarElementoInputImage(){
 
     inputImagem.on('change', function(e){
         const file = e.target.files[0];
-        console.log(file)
-
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = (event) => {
-                const img = new Image();
-                img.onload = () => {
-                    originalImage = img;
-                    processImage();
-                };
-                img.src = event.target.result;
-            };
-            reader.readAsDataURL(file);
-        }
-
 
         limparCorpoModal();
         modalElement.first().get(0).style.setProperty("width", "700px", "important");
         corpoModal.html(`
             <div id="contentModalFilter">
                 <div id="visualizacaoImagem">
-                    <img src="src/images/photos.png">
+                    <canvas id="canvasBlended" class="canvas"></canvas>
                 </div>
                 <div id="filtrosContainer">
                     <div class="filtro">
@@ -178,14 +165,106 @@ function carregarElementoInputImage(){
                 </div>
             </div>
         `)
+        
+        $('.filtro').on('click', function(){
+            modoSelecionado = $(this).children().eq(1).text().toLowerCase();
+            processImage();
+        });
+
+        canvasBlended = document.getElementById('canvasBlended');
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                const img = new Image();
+                img.onload = () => {
+                    originalImage = img;
+                    processImage();
+                };
+                img.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
     });
+}
+
+const presetColors = {
+    aden: "#FAE2D0",
+    clarendon: "#F0F0FF",
+    crema: "#FFD8A8",
+    gingham: "#E0D6FF",
+    juno: "#FFE8E0",
+    lark: "#E6F0FF",
+    ludwig: "#FFF0E0",
+    moon: "#D0D0D0",
+    perpetua: "#CDE4FF",
+    reyes: "#FFD8D0",
+    slumber: "#F4E8E0",
+    normal: "#FFFFFF"
+};
+
+
+function processImageAtSize(img, targetWidth, targetHeight) {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    
+    canvas.width = targetWidth;
+    canvas.height = targetHeight;
+    
+    // Desenhar imagem
+    ctx.drawImage(img, 0, 0, targetWidth, targetHeight);
+    
+    // Obter dados dos pixels
+    const imageData = ctx.getImageData(0, 0, targetWidth, targetHeight);
+    const data = imageData.data;
+    
+    let baseColor = presetColors["aden"] || "#FFFFFF";
+
+    const rgb = {
+        r: parseInt(baseColor.slice(1, 3), 16),
+        g: parseInt(baseColor.slice(3, 5), 16),
+        b: parseInt(baseColor.slice(5, 7), 16)
+    };
+    
+
+    // Aplicar blending com a cor fixa
+
+    
+
+    if(modoSelecionado == "clarendon"){
+        for (let i = 0; i < data.length; i += 4) {
+            data[i] = applyBlendMode(modoSelecionado, data[i], 105);
+            data[i + 1] = applyBlendMode(modoSelecionado, data[i + 1], 145);
+            data[i + 2] = applyBlendMode(modoSelecionado, data[i + 2], 175);
+        }
+    }
+    else if(modoSelecionado == "crema"){
+        for (let i = 0; i < data.length; i += 4) {
+            data[i] = applyBlendMode(modoSelecionado, data[i], 125);
+            data[i + 1] = applyBlendMode(modoSelecionado, data[i + 1], 127);
+            data[i + 2] = applyBlendMode(modoSelecionado, data[i + 2], 118);
+        }
+    }
+    else{
+        for (let i = 0; i < data.length; i += 4) {
+            data[i] = applyBlendMode(modoSelecionado, data[i], data[i]);
+            data[i + 1] = applyBlendMode(modoSelecionado, data[i + 1], data[i+1]);
+            data[i + 2] = applyBlendMode(modoSelecionado, data[i + 2], data[i+2]);
+        }
+    }
+    
+
+    
+    // Colocar os pixels processados de volta
+    ctx.putImageData(imageData, 0, 0);
+    
+    return canvas;
 }
 
 
 function processImage() {
     if (!originalImage) return;
 
-    const ctxOriginal = canvasOriginal.getContext('2d');
     const ctxBlended = canvasBlended.getContext('2d');
 
     // Calcular dimensões para preview (mantendo aspect ratio)
@@ -201,13 +280,8 @@ function processImage() {
     }
 
     // Configurar canvas de preview
-    canvasOriginal.width = previewWidth;
-    canvasOriginal.height = previewHeight;
     canvasBlended.width = previewWidth;
     canvasBlended.height = previewHeight;
-
-    // Desenhar preview da imagem original
-    ctxOriginal.drawImage(originalImage, 0, 0, previewWidth, previewHeight);
     
     // Processar preview com blending
     const previewBlended = processImageAtSize(originalImage, previewWidth, previewHeight);
@@ -217,9 +291,58 @@ function processImage() {
     fullSizeCanvas = processImageAtSize(originalImage, originalImage.width, originalImage.height);
 
     // Mostrar canvas e esconder placeholders
-    canvasOriginal.classList.add('active');
     canvasBlended.classList.add('active');
-    originalPlaceholder.classList.add('hidden');
-    blendedPlaceholder.classList.add('hidden');
-    exportBtn.classList.remove('hidden');
+}
+
+function applyBlendMode(mode, a, b) {
+    a = a / 255;
+    b = b / 255;
+    let result = 0;
+
+    switch(mode) {
+        case 'normal': 
+            result = b;
+            break;
+        case 'clarendon': 
+             result = (a < 0.5) 
+                ? 2 * a * b 
+                : 1 - 2 * (1 - a) * (1 - b);
+            result = Math.pow(result, 1.13); 
+            break;
+        case 'crema': 
+            result = b < 0.5 ? 2 * a * b : 1 - 2 * (1 - a) * (1 - b);
+            break;
+        case 'gingham': 
+            result = a * 0.9 + b * 0.1;
+            break;
+        case 'moon': 
+            result = (a + b) / 2;
+            break;
+        case 'lark': 
+            result = a * (0.8 + b * 0.2);
+            break;
+        case 'reyes': 
+            result = Math.sqrt(a * b);
+            break;
+        case 'juno': 
+            result = a + b * 0.2;
+            break;
+        case 'slumber': 
+            result = a * 0.85 + b * 0.15;
+            break;
+        case 'ludwig': 
+            result = a < 0.5 ? 2 * a * b : 1 - 2 * (1 - a) * (1 - b);
+            break;
+        case 'aden': 
+            result = Math.pow(a, 1.18) * 0.8 + 0.1; 
+            break;
+        case 'perpetua': 
+            result = a * 0.9 + b * 0.1;
+            break;
+        default: 
+            result = b;
+            break;
+    }
+
+    return Math.round(result * 255);
 }

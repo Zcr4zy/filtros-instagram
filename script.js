@@ -143,6 +143,8 @@ function processImageAtSize(img, targetWidth, targetHeight) {
     };
     
     // Aplicar blending em cada pixel
+
+    console.log(rgb)
     for (let i = 0; i < data.length; i += 4) {
         data[i] = applyBlendMode(blendMode, data[i], rgb.r);
         data[i + 1] = applyBlendMode(blendMode, data[i + 1], rgb.g);
