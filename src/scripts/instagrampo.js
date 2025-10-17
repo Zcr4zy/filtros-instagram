@@ -245,6 +245,62 @@ function processImageAtSize(img, targetWidth, targetHeight) {
             data[i + 2] = applyBlendMode(modoSelecionado, data[i + 2], 118);
         }
     }
+    else if(modoSelecionado == "gingham"){
+        for (let i = 0; i < data.length; i += 4) {
+            data[i] = applyBlendMode(modoSelecionado, data[i], 39);
+            data[i + 1] = applyBlendMode(modoSelecionado, data[i + 1], 37);
+            data[i + 2] = applyBlendMode(modoSelecionado, data[i + 2], 37);
+        }
+    }
+    else if(modoSelecionado == "juno"){
+        for (let i = 0; i < data.length; i += 4) {
+            data[i] = applyBlendMode(modoSelecionado, data[i], 149);
+            data[i + 1] = applyBlendMode(modoSelecionado, data[i + 1], 167);
+            data[i + 2] = applyBlendMode(modoSelecionado, data[i + 2], 153);
+        }
+    }
+    else if(modoSelecionado == "lark"){
+        for (let i = 0; i < data.length; i += 4) {
+            data[i] = applyBlendMode(modoSelecionado, data[i], 46);
+            data[i + 1] = applyBlendMode(modoSelecionado, data[i + 1], 46);
+            data[i + 2] = applyBlendMode(modoSelecionado, data[i + 2], 46);
+        }
+    }
+    else if(modoSelecionado == "ludwig"){
+        for (let i = 0; i < data.length; i += 4) {
+            data[i] = applyBlendMode(modoSelecionado, data[i], 165);
+            data[i + 1] = applyBlendMode(modoSelecionado, data[i + 1], 136);
+            data[i + 2] = applyBlendMode(modoSelecionado, data[i + 2], 136);
+        }
+    }
+    else if(modoSelecionado == "moon"){
+        for (let i = 0; i < data.length; i += 4) {
+            data[i] = applyBlendMode(modoSelecionado, data[i], 39);
+            data[i + 1] = applyBlendMode(modoSelecionado, data[i + 1], 37);
+            data[i + 2] = applyBlendMode(modoSelecionado, data[i + 2], 37);
+        }
+    }
+    else if(modoSelecionado == "reyes"){
+        for (let i = 0; i < data.length; i += 4) {
+            data[i] = applyBlendMode(modoSelecionado, data[i], 126);
+            data[i + 1] = applyBlendMode(modoSelecionado, data[i + 1], 114);
+            data[i + 2] = applyBlendMode(modoSelecionado, data[i + 2], 114);
+        }
+    }
+    else if(modoSelecionado == "perpetua"){
+        for (let i = 0; i < data.length; i += 4) {
+            data[i] = applyBlendMode(modoSelecionado, data[i], 52);
+            data[i + 1] = applyBlendMode(modoSelecionado, data[i + 1], 56);
+            data[i + 2] = applyBlendMode(modoSelecionado, data[i + 2], 41);
+        }
+    }
+    else if(modoSelecionado == "slumber"){
+        for (let i = 0; i < data.length; i += 4) {
+            data[i] = applyBlendMode(modoSelecionado, data[i], 174);
+            data[i + 1] = applyBlendMode(modoSelecionado, data[i + 1], 180);
+            data[i + 2] = applyBlendMode(modoSelecionado, data[i + 2], 151);
+        }
+    }
     else{
         for (let i = 0; i < data.length; i += 4) {
             data[i] = applyBlendMode(modoSelecionado, data[i], data[i]);
@@ -299,45 +355,49 @@ function applyBlendMode(mode, a, b) {
     b = b / 255;
     let result = 0;
 
+    canvasBlended.style.filter = 'grayscale(0%)';
     switch(mode) {
         case 'normal': 
             result = b;
             break;
         case 'clarendon': 
-             result = (a < 0.5) 
+             result = (a < 0.8) 
                 ? 2 * a * b 
                 : 1 - 2 * (1 - a) * (1 - b);
-            result = Math.pow(result, 1.13); 
+            result = Math.pow(result, 1.20); 
             break;
         case 'crema': 
             result = b < 0.5 ? 2 * a * b : 1 - 2 * (1 - a) * (1 - b);
             break;
         case 'gingham': 
-            result = a * 0.9 + b * 0.1;
+            result = Math.min(1, a + b);
             break;
-        case 'moon': 
-            result = (a + b) / 2;
+        case 'moon':
+            result = Math.max(a, b);
+            canvasBlended.style.filter = 'grayscale(100%)';
             break;
         case 'lark': 
-            result = a * (0.8 + b * 0.2);
+            result = b === 1 ? 1 : Math.min(1, a / (1 - b));
             break;
         case 'reyes': 
-            result = Math.sqrt(a * b);
+            result = 1 - (1 - a) * (1 - b);
             break;
         case 'juno': 
-            result = a + b * 0.2;
+            result = a < 0.5 ? 2 * a * b : 1 - 2 * (1 - a) * (1 - b);
             break;
         case 'slumber': 
-            result = a * 0.85 + b * 0.15;
+            result = b < 0.5 
+                ? 2 * a * b + a * a * (1 - 2 * b)
+                : 2 * a * (1 - b) + Math.sqrt(a) * (2 * b - 1);
             break;
         case 'ludwig': 
             result = a < 0.5 ? 2 * a * b : 1 - 2 * (1 - a) * (1 - b);
             break;
         case 'aden': 
-            result = Math.pow(a, 1.18) * 0.8 + 0.1; 
+            result = Math.pow(a, 0.96) * 0.88 + 0.05; 
             break;
         case 'perpetua': 
-            result = a * 0.9 + b * 0.1;
+            result = 1 - (1 - a) * (1 - b);
             break;
         default: 
             result = b;
