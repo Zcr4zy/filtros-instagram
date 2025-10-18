@@ -146,6 +146,14 @@ body{
   filter: brightness(0.6);
 }
 
+.posts-content {
+  margin-bottom: 5px;
+  padding: 15px;
+  border-radius: 8px;
+  color: #eee;
+  font-family: Arial, sans-serif;
+}
+
 .posts-content span{
   font-size: 14px;
   transition: filter 0.4s ease;
@@ -157,12 +165,12 @@ body{
 
 
 .image-post img{
-  margin-top: 10px;
+  margin-top: 5px;
   width: 520px;
   height: 500px;
-  border: 1px solid rgba(255, 255, 255,0.7);
+  border: none;
   transition: filter 0.4s ease;
-  margin-bottom: 30px;
+  margin-bottom: 0;
 }
 
 .image-post img:hover{
@@ -397,4 +405,78 @@ body{
   max-height: 380px;
   border-radius: 10px;
   object-fit: contain;
+}
+
+.post-actions {
+    display: flex;
+    gap: 15px;
+    padding: 10px 15px;
+    align-items: center;
+    background-color: transparent; /* remove fundo se houver */
+}
+
+.post-actions button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 5px;
+    transition: color 0.2s ease;
+}
+
+.post-actions button:hover {
+    color: #ff4757; /* muda cor ao passar o mouse */
+}
+
+.post-actions i {
+    width: 18px;
+    height: 18px;
+}
+
+.post-icons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 8px;
+  cursor: pointer; /* muda o cursor pra mãozinha */
+  filter: brightness(1.2); /* deixa o ícone mais claro */
+  transition: transform 0.2s ease, filter 0.2s ease; /* animação suave */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* sombra suave */
+}
+
+.post-icons img {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  filter: brightness(1.2); /* deixa o ícone mais claro */
+  transform: scale(1.1);   /* aumenta um pouquinho */
+  transition: filter 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* sombra suave */
+}
+
+.post-likes {
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #ddd;
+}
+
+.post-likes b {
+  font-weight: 600;
+}
+
+.post-comments {
+  font-size: 13px;
+  color: #ccc;
+}
+
+.post-comments div {
+  margin-bottom: 5px;
+}
+
+.post-comments b {
+  font-weight: 600;
+  margin-right: 5px;
 }

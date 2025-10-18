@@ -58,8 +58,50 @@ var posts = [
     },
 ]
 
+const nomesAleatorios = ['maria123', 'joaozinho', 'ana_lopes', 'pedro_fer', 'carla87', 'lucas94'];
+
 posts.forEach((post, index) => {
-    contentPosts.innerHTML += `
+
+    const nomeSorteado = nomesAleatorios[Math.floor(Math.random() * nomesAleatorios.length)];
+
+    // Curtidas e comentários fictícios (você pode gerar aleatórios ou fixos)
+   // Gerar um número aleatório de curtidas (já existente)
+const likesCount = Math.floor(Math.random() * 300) + 50;
+
+// Função para gerar um nome aleatório
+function generateRandomUsername() {
+    const usernames = ['joaosilva', 'mariarodrigues', 'pedroalmeida', 'lucascastro', 'paulasantos', 'carolbarbosa'];
+    const randomIndex = Math.floor(Math.random() * usernames.length);
+    return usernames[randomIndex];
+}
+
+// Comentários fixos (não aleatórios)
+const fixedComments = [
+    'Adorei essa foto!',
+    'Show demais!',
+    'Que legal! Muito bom!',
+    'Incrível, quero uma igual!',
+    'Muito estiloso! 😎',
+    'Amei, você arrasa!',
+    'Essa foto ficou perfeita! ❤️'
+];
+
+// Gerar uma quantidade aleatória de comentários, entre 1 e 5
+const numberOfComments = Math.floor(Math.random() * 5) + 1;
+
+// Gerar os comentários aleatórios (nomes aleatórios e comentários fixos)
+const commenters = [];
+for (let i = 0; i < numberOfComments; i++) {
+    commenters.push({
+        user: generateRandomUsername(),
+        comment: fixedComments[i % fixedComments.length] // Se tiver mais comentários do que opções, ele repete
+    });
+}
+
+console.log("Curtidas:", likesCount);
+console.log("Comentários:", commenters);
+
+contentPosts.innerHTML += `
         <div class="posts-content">
             <div class="post-header">
                 <img src="${post.imagemPublicante}" alt="">
@@ -68,9 +110,23 @@ posts.forEach((post, index) => {
             <div class="image-post">
                 <img src="${post.imagemPublicacao}">
             </div>
+            <div class="post-icons">
+                <i data-lucide="heart" class="icon-like"></i>
+                <i data-lucide="message-circle" class="icon-comment"></i>
+                <i data-lucide="send" class="icon-send"></i>
+                <i data-lucide="bookmark" class="icon-save"></i>
+            </div>
+            <div class="post-likes">
+                <span>Curtiu por  <b><span>${nomeSorteado}</b> e <b>${likesCount} outras pessoas</b></span>
+            </div>
+            <div class="post-comments">
+                ${commenters.map(c => `<div><b>${c.user}</b> ${c.comment}</div>`).join('')}
+            </div>
         </div>
-        `
+    `;
 });
+
+lucide.createIcons();
 
 btnCriar.on('click', function(){
     modal.show();
