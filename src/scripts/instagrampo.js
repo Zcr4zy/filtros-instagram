@@ -82,6 +82,12 @@ function limparCorpoModal(){
     corpoModal.empty();
 }
 
+function nhonho(){
+    som = new Audio('/src/AICHAVES.mp3');
+    som.play();
+    som = null;
+}
+
 function carregarElementoInputImage(){
     corpoModal = $('.modaljs-modal-body');
 
@@ -282,16 +288,16 @@ function processImageAtSize(img, targetWidth, targetHeight) {
     }
     else if(modoSelecionado == "reyes"){
         for (let i = 0; i < data.length; i += 4) {
-            data[i] = applyBlendMode(modoSelecionado, data[i], 126);
-            data[i + 1] = applyBlendMode(modoSelecionado, data[i + 1], 114);
-            data[i + 2] = applyBlendMode(modoSelecionado, data[i + 2], 114);
+            data[i] = applyBlendMode(modoSelecionado, data[i], 62);
+            data[i + 1] = applyBlendMode(modoSelecionado, data[i + 1], 60);
+            data[i + 2] = applyBlendMode(modoSelecionado, data[i + 2], 45);
         }
     }
     else if(modoSelecionado == "perpetua"){
         for (let i = 0; i < data.length; i += 4) {
-            data[i] = applyBlendMode(modoSelecionado, data[i], 52);
-            data[i + 1] = applyBlendMode(modoSelecionado, data[i + 1], 56);
-            data[i + 2] = applyBlendMode(modoSelecionado, data[i + 2], 41);
+            data[i] = applyBlendMode(modoSelecionado, data[i], 101);
+            data[i + 1] = applyBlendMode(modoSelecionado, data[i + 1], 131);
+            data[i + 2] = applyBlendMode(modoSelecionado, data[i + 2], 139);
         }
     }
     else if(modoSelecionado == "slumber"){
@@ -380,7 +386,7 @@ function applyBlendMode(mode, a, b) {
             result = b === 1 ? 1 : Math.min(1, a / (1 - b));
             break;
         case 'reyes': 
-            result = 1 - (1 - a) * (1 - b);
+            result = Math.min(1, a + b);
             break;
         case 'juno': 
             result = a < 0.5 ? 2 * a * b : 1 - 2 * (1 - a) * (1 - b);
@@ -397,7 +403,9 @@ function applyBlendMode(mode, a, b) {
             result = Math.pow(a, 0.96) * 0.88 + 0.05; 
             break;
         case 'perpetua': 
-            result = 1 - (1 - a) * (1 - b);
+            result = b < 0.5 
+                ? 2 * a * b + a * a * (1 - 2 * b)
+                : 2 * a * (1 - b) + Math.sqrt(a) * (2 * b - 1);
             break;
         default: 
             result = b;
