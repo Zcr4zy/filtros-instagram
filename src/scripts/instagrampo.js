@@ -64,18 +64,14 @@ posts.forEach((post, index) => {
 
     const nomeSorteado = nomesAleatorios[Math.floor(Math.random() * nomesAleatorios.length)];
 
-    // Curtidas e comentários fictícios (você pode gerar aleatórios ou fixos)
-   // Gerar um número aleatório de curtidas (já existente)
 const likesCount = Math.floor(Math.random() * 300) + 50;
 
-// Função para gerar um nome aleatório
 function generateRandomUsername() {
     const usernames = ['joaosilva', 'mariarodrigues', 'pedroalmeida', 'lucascastro', 'paulasantos', 'carolbarbosa'];
     const randomIndex = Math.floor(Math.random() * usernames.length);
     return usernames[randomIndex];
 }
 
-// Comentários fixos (não aleatórios)
 const fixedComments = [
     'Adorei essa foto!',
     'Show demais!',
@@ -86,20 +82,15 @@ const fixedComments = [
     'Essa foto ficou perfeita! ❤️'
 ];
 
-// Gerar uma quantidade aleatória de comentários, entre 1 e 5
 const numberOfComments = Math.floor(Math.random() * 5) + 1;
 
-// Gerar os comentários aleatórios (nomes aleatórios e comentários fixos)
 const commenters = [];
 for (let i = 0; i < numberOfComments; i++) {
     commenters.push({
         user: generateRandomUsername(),
-        comment: fixedComments[i % fixedComments.length] // Se tiver mais comentários do que opções, ele repete
+        comment: fixedComments[i % fixedComments.length]
     });
 }
-
-console.log("Curtidas:", likesCount);
-console.log("Comentários:", commenters);
 
 contentPosts.innerHTML += `
         <div class="posts-content">
@@ -273,10 +264,8 @@ function processImageAtSize(img, targetWidth, targetHeight) {
     canvas.width = targetWidth;
     canvas.height = targetHeight;
     
-    // Desenhar imagem
     ctx.drawImage(img, 0, 0, targetWidth, targetHeight);
     
-    // Obter dados dos pixels
     const imageData = ctx.getImageData(0, 0, targetWidth, targetHeight);
     const data = imageData.data;
     
@@ -287,9 +276,6 @@ function processImageAtSize(img, targetWidth, targetHeight) {
         g: parseInt(baseColor.slice(3, 5), 16),
         b: parseInt(baseColor.slice(5, 7), 16)
     };
-    
-
-    // Aplicar blending com a cor fixa
 
     
 
@@ -373,7 +359,6 @@ function processImageAtSize(img, targetWidth, targetHeight) {
     
 
     
-    // Colocar os pixels processados de volta
     ctx.putImageData(imageData, 0, 0);
     
     return canvas;
@@ -385,7 +370,6 @@ function processImage() {
 
     const ctxBlended = canvasBlended.getContext('2d');
 
-    // Calcular dimensões para preview (mantendo aspect ratio)
     const maxWidth = 400;
     const maxHeight = 400;
     let previewWidth = originalImage.width;
@@ -397,18 +381,14 @@ function processImage() {
         previewHeight = Math.floor(previewHeight * ratio);
     }
 
-    // Configurar canvas de preview
     canvasBlended.width = previewWidth;
     canvasBlended.height = previewHeight;
     
-    // Processar preview com blending
     const previewBlended = processImageAtSize(originalImage, previewWidth, previewHeight);
     ctxBlended.drawImage(previewBlended, 0, 0);
     
-    // Processar imagem em tamanho ORIGINAL para exportação
     fullSizeCanvas = processImageAtSize(originalImage, originalImage.width, originalImage.height);
 
-    // Mostrar canvas e esconder placeholders
     canvasBlended.classList.add('active');
 }
 

@@ -147,8 +147,8 @@ body{
 }
 
 .posts-content {
-  margin-bottom: 5px;
-  padding: 15px;
+  margin-bottom: 2px;
+  padding: 5px;
   border-radius: 8px;
   color: #eee;
   font-family: Arial, sans-serif;
@@ -429,7 +429,7 @@ body{
 }
 
 .post-actions button:hover {
-    color: #ff4757; /* muda cor ao passar o mouse */
+    color: #ff4757; 
 }
 
 .post-actions i {
@@ -440,21 +440,22 @@ body{
 .post-icons {
   display: flex;
   gap: 15px;
+  margin-top: 10px;
   margin-bottom: 8px;
-  cursor: pointer; /* muda o cursor pra mãozinha */
-  filter: brightness(1.2); /* deixa o ícone mais claro */
-  transition: transform 0.2s ease, filter 0.2s ease; /* animação suave */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* sombra suave */
+  cursor: pointer; 
+  filter: brightness(1.2); 
+  transition: transform 0.2s ease, filter 0.2s ease; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .post-icons img {
   width: 24px;
   height: 24px;
   cursor: pointer;
-  filter: brightness(1.2); /* deixa o ícone mais claro */
-  transform: scale(1.1);   /* aumenta um pouquinho */
+  filter: brightness(1.2); 
+  transform: scale(1.1);  
   transition: filter 0.3s;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* sombra suave */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .post-likes {
@@ -479,4 +480,8 @@ body{
 .post-comments b {
   font-weight: 600;
   margin-right: 5px;
+}
+
+.icon-save {
+  margin-left: 375px;
 }
