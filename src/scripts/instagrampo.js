@@ -102,16 +102,16 @@ contentPosts.innerHTML += `
                 <img src="${post.imagemPublicacao}">
             </div>
             <div class="post-icons">
-                <i data-lucide="heart" class="icon-like"></i>
-                <i data-lucide="message-circle" class="icon-comment"></i>
-                <i data-lucide="send" class="icon-send"></i>
-                <i data-lucide="bookmark" class="icon-save"></i>
+                <i data-lucide="heart" class="icon-like" title="Curtir"></i>
+                <i data-lucide="message-circle" class="icon-comment" title="Comentar"></i>
+                <i data-lucide="send" class="icon-send" title="Compartilhar"></i>
+                <i data-lucide="bookmark" class="icon-save" title="Salvar"></i>
             </div>
             <div class="post-likes">
-                <span>Curtiu por  <b><span>${nomeSorteado}</b> e <b>${likesCount} outras pessoas</b></span>
+                <span>Curtido por <b title="${nomeSorteado}"><span>${nomeSorteado}</b> e <b>${likesCount} outras pessoas</b></span>
             </div>
             <div class="post-comments">
-                ${commenters.map(c => `<div><b>${c.user}</b> ${c.comment}</div>`).join('')}
+                ${commenters.map(c => `<div><b title="${c.user}">${c.user}</b> ${c.comment}</div>`).join('')}
             </div>
         </div>
     `;
@@ -147,7 +147,7 @@ function carregarElementoInputImage(){
         <div class="divInputImage">
             <img src="src/images/photos.png" class="imgPhotos">
             <span>Selecione uma imagem</span>
-            <label class="btnInputImage">
+            <label class="btnInputImage" title="Selecionar arquivo">
                 Selecionar do dispositivo
                 <input class="inputImage" type="file" accept=".jpg, .jpeg, .png" />
             </label>
@@ -167,51 +167,51 @@ function carregarElementoInputImage(){
                     <canvas id="canvasBlended" class="canvas"></canvas>
                 </div>
                 <div id="filtrosContainer">
-                    <div class="filtro">
+                    <div class="filtro" title="Aden">
                         <img src="src/images/filtrosInstagram/Aden.jpg" alt="Filtro Aden">
                         <p>Aden</p>
                     </div>
-                    <div class="filtro">
+                    <div class="filtro" title="Clarendon">
                         <img src="src/images/filtrosInstagram/Clarendon.jpg" alt="Filtro Clarendon">
                         <p>Clarendon</p>
                     </div>
-                    <div class="filtro">
+                    <div class="filtro" title="Crema">
                         <img src="src/images/filtrosInstagram/Crema.jpg" alt="Filtro Crema">
                         <p>Crema</p>
                     </div>
-                    <div class="filtro">
+                    <div class="filtro" title="Gingham">
                         <img src="src/images/filtrosInstagram/Gingham.jpg" alt="Filtro Gingham">
                         <p>Gingham</p>
                     </div>
-                    <div class="filtro">
+                    <div class="filtro" title="Juno">
                         <img src="src/images/filtrosInstagram/Juno.jpg" alt="Filtro Juno">
                         <p>Juno</p>
                     </div>
-                    <div class="filtro">
+                    <div class="filtro" title="Lark">
                         <img src="src/images/filtrosInstagram/Lark.jpg" alt="Filtro Lark">
                         <p>Lark</p>
                     </div>
-                    <div class="filtro">
+                    <div class="filtro" title="Ludwig">
                         <img src="src/images/filtrosInstagram/Ludwig.jpg" alt="Filtro Ludwig">
                         <p>Ludwig</p>
                     </div>
-                    <div class="filtro">
+                    <div class="filtro" title="Moon">
                         <img src="src/images/filtrosInstagram/Moon.jpg" alt="Filtro Moon">
                         <p>Moon</p>
                     </div>
-                    <div class="filtro">
+                    <div class="filtro" title="Original">
                         <img src="src/images/filtrosInstagram/Normal.jpg" alt="Filtro Normal">
                         <p>Original</p>
                     </div>
-                    <div class="filtro">
+                    <div class="filtro" title="Perpetua">
                         <img src="src/images/filtrosInstagram/Perpetua.jpg" alt="Filtro Perpetua">
                         <p>Perpetua</p>
                     </div>
-                    <div class="filtro">
+                    <div class="filtro" title="Reyes">
                         <img src="src/images/filtrosInstagram/Reyes.jpg" alt="Filtro Reyes">
                         <p>Reyes</p>
                     </div>
-                    <div class="filtro">
+                    <div class="filtro" title="Slumber">
                         <img src="src/images/filtrosInstagram/Slumber.jpg" alt="Filtro Slumber">
                         <p>Slumber</p>
                     </div>

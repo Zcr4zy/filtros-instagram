@@ -10,6 +10,10 @@
   font-weight: bold;
 }
 
+#logo{
+  cursor: pointer;
+}
+
 body{
     background-color: rgb(0,0,0);
     color: white;
@@ -58,6 +62,7 @@ body{
     margin-right: 15px;
     border-radius: 20px;
     transition: background-color 0.4s ease;
+    cursor: pointer;
 }
 
 .sidebarEsquerda .sidebarIconsNav svg{
@@ -108,6 +113,7 @@ body{
   box-sizing: border-box;
   margin-right: 13px;
   transition: filter 0.4s ease;
+  cursor: pointer;
 }
 
 .div-storys img:hover{
@@ -140,6 +146,11 @@ body{
   box-sizing: border-box;
   margin-right: 13px;
   transition: filter 0.4s ease;
+  cursor: pointer;
+}
+
+.post-header span{
+  cursor: pointer;
 }
 
 .post-header img:hover{
@@ -171,6 +182,7 @@ body{
   border: none;
   transition: filter 0.4s ease;
   margin-bottom: 0;
+  cursor: pointer;
 }
 
 .image-post img:hover{
@@ -191,6 +203,7 @@ body{
   text-align: center;
   align-items: center;
   width: 210px;
+  cursor: pointer;
 }
 
 .modaljs-modal{
@@ -441,8 +454,7 @@ body{
   display: flex;
   gap: 15px;
   margin-top: 10px;
-  margin-bottom: 8px;
-  cursor: pointer; 
+  margin-bottom: 8px; 
   filter: brightness(1.2); 
   transition: transform 0.2s ease, filter 0.2s ease; 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -456,6 +468,14 @@ body{
   transform: scale(1.1);  
   transition: filter 0.3s;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.post-icons svg{
+  transition: filter 0.3s ease;
+}
+
+.post-icons svg:hover{
+  filter: brightness(0.3);
 }
 
 .post-likes {
@@ -477,6 +497,15 @@ body{
   margin-bottom: 5px;
 }
 
+.post-comments b{
+  cursor: pointer;
+  transition: filter 0.5s ease;
+}
+
+.post-comments b:hover{
+  filter: brightness(0.6);
+}
+
 .post-comments b {
   font-weight: 600;
   margin-right: 5px;
@@ -485,3 +514,12 @@ body{
 .icon-save {
   margin-left: 375px;
 }
+
+svg{
+  cursor: pointer;
+}
+
+.post-likes span{
+  cursor: pointer;
+}
+
